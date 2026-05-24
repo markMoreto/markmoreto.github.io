@@ -13,7 +13,7 @@ const posts = (await getCollection('blog')).sort(
     {posts.map(post => (
       <li class="post-item">
         <div class="post-item-header">
-          <a href={`/blog/${post.slug}`} class="post-item-title">{post.data.title}</a>
+          <a href={`/blog/${post.id.replace(/\.(md|mdx)$/, '')}`} class="post-item-title">{post.data.title}</a>
           <span class="post-item-date">
             {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </span>

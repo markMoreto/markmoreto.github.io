@@ -10,9 +10,9 @@ Migrated from Hexo (2018) to **Astro 4 + TinaCMS** in 2026.
 
 | Layer | Technology |
 |---|---|
-| Static site generator | [Astro 4](https://astro.build) |
+| Static site generator | [Astro 6](https://astro.build) |
 | Content format | MDX (Markdown + JSX) |
-| Local CMS UI | [TinaCMS](https://tina.io) (local mode, no cloud account needed) |
+| Local CMS UI | [TinaCMS 3](https://tina.io) (local mode, no cloud account needed) |
 | Styling | Plain CSS (`src/styles/global.css`) |
 | Deployment | GitHub Actions → GitHub Pages |
 | Custom domain | `norbyt3s.com` via `public/CNAME` |
@@ -21,8 +21,8 @@ Migrated from Hexo (2018) to **Astro 4 + TinaCMS** in 2026.
 
 ## System Requirements
 
-- **Node.js**: 20 or higher (see `.nvmrc`)
-- **npm**: 10 or higher (comes with Node 20)
+- **Node.js**: 22 or higher (see `.nvmrc`)
+- **npm**: 10 or higher (comes with Node 22)
 - **nvm** (recommended): to manage Node versions
 
 > The system default Node may be older. Always confirm you're on Node 20+ before running any command.
@@ -33,10 +33,10 @@ Migrated from Hexo (2018) to **Astro 4 + TinaCMS** in 2026.
 
 ```bash
 # 1. Switch to the correct Node version
-nvm use 20
+nvm use 22
 
-# (Optional) Make Node 20 your permanent default so you don't need to run this every time
-nvm alias default 20
+# (Optional) Make Node 22 your permanent default so you don't need to run this every time
+nvm alias default 22
 
 # 2. Install dependencies
 npm install
@@ -75,8 +75,8 @@ markmoreto.github.io/
 │       ├── keto-fasting-diet/
 │       └── cloud-torrent/
 ├── src/
+│   ├── content.config.ts       # Astro Content Collection schema (Zod + glob loader)
 │   ├── content/
-│   │   ├── config.ts           # Astro Content Collection schema (Zod validation)
 │   │   └── blog/               # Blog posts as .mdx files — one file per post
 │   ├── layouts/
 │   │   ├── BaseLayout.astro    # HTML shell: <head>, nav, footer
@@ -221,8 +221,8 @@ Edit the `<ul>` inside `src/layouts/BaseLayout.astro`.
 ### Build fails locally
 
 ```bash
-nvm use 20        # confirm Node 20 is active
-node --version    # should print v20.x.x
+nvm use 22        # confirm Node 22 is active
+node --version    # should print v22.x.x
 npm run build
 ```
 
@@ -255,4 +255,4 @@ npm run build
 | Year | Stack |
 |---|---|
 | 2018 | Hexo static site generator, compiled HTML pushed directly to `master` |
-| 2026 | Migrated to Astro 4 + TinaCMS, deployed via GitHub Actions |
+| 2026 | Migrated to Astro 6 + TinaCMS 3, deployed via GitHub Actions on Node 22 |
