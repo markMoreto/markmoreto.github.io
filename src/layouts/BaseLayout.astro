@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = "Mark Moreto's personal blog — views, opinions, and interests.",
+  image,
+} = Astro.props;
+
+const siteUrl = 'https://norbyt3s.com';
+const pageTitle = title === 'norbyt3s' ? title : `${title} | norbyt3s`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="norbyt3s" />
+    <meta property="og:url" content={siteUrl + Astro.url.pathname} />
+    {image && <meta property="og:image" content={siteUrl + image} />}
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="site-title">norbyt3s</a>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Writing</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>Copyright &copy; {new Date().getFullYear()} Mark Moreto</p>
+    </footer>
+  </body>
+</html>
