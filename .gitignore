@@ -4,3 +4,4 @@ dist/
 .env
 .env.production
 tina/__generated__/
+public/admin/
